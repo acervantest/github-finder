@@ -13,7 +13,6 @@ import './App.css';
 const App = () => {
 
   const [loading, setLoading] = useState(false);
-  const [users, setUsers] = useState([]);
   const [alert, setAlert] = useState(null);
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
@@ -40,11 +39,6 @@ const App = () => {
     setLoading(false);
   }
 
-  const clearUsers = () => {
-    setUsers([]);
-    setLoading(false);
-  }
-
   const showAlert = (msg, type) => {
     setAlert({ msg, type })
    setTimeout( () => setAlert(null), 3000)
@@ -60,12 +54,10 @@ const App = () => {
         <Switch>
           <Route exact path='/' render={ () => (
             <Fragment>
-              <Search 
-                clearUsers={clearUsers} 
-                showClear={users.length > 0 ? true : false} 
+              <Search  
                 setAlert={showAlert}
               />
-              <Users loading={loading} users={users} />
+              <Users />
             </Fragment>
           )}/>
           <Route path='/about' component={About} />
