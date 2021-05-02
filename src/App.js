@@ -79,8 +79,14 @@ class App extends Component {
             )}/>
             <Route path='/about' component={About} />
 
-            <Route path='/user/:login' render={ props => (
-              <User { ...props } getUser={this.searchUser} user={ user }/>
+            <Route path='/user/:login' render={ 
+              props => (
+                <User 
+                  {...props} 
+                  getUser={this.searchUser} 
+                  user={user}
+                  loading={loading}
+                />
             )}/>
           </Switch> 
         </div> 
